@@ -3,10 +3,9 @@
 Game - Space Adventures
 Hugo Agnola
 
-You're a lone soviet warrior who must fight in order to take out the fascists. Do it for the Motherland and bring glory back to mother Russia
+you're a space ship in charge of exploring space, and discovering new planets
 
-Includes: Physics-based movement, keyboard controls, health/stamina,
-random movement, screen wrap.
+Includes: Physics-based movement, keyboard controls, random movement.
 
 ******************************************************/
 
@@ -25,7 +24,6 @@ let ship = {
 
   speed: 25,
 }
-
 //declare enemy class (position, size, velocity)
 let enemy = {
 
@@ -42,7 +40,6 @@ let enemy = {
   speed: 25,
     maxspd: 45,
 }
-
 //declare planet class (position, size, velocity)
 let planet = {
 
@@ -59,7 +56,6 @@ let planet = {
   speed: 25,
     maxspd: 40,
 }
-
 //declare images, variables and sounds
 let sfx_1;
 let title;
@@ -83,7 +79,6 @@ function setup() {
 
   setupEnemy();
 }
-
 //link asset paths
 function setupImage() {
   ship.image = loadImage('assets/images/koom.gif');
@@ -93,12 +88,10 @@ function setupImage() {
   backg = loadImage('assets/images/bg.jpg')
   imageMode(CENTER);
 }
-
 //initialize sound volume
 function setupSound() {
   sfx_1.setVolume(0.5);
 }
-
 // Initialises player position
 function setupPlayer() {
   playerX = 4 * width / 5;
@@ -106,8 +99,8 @@ function setupPlayer() {
 }
 
 function setupEnemy() {
-  enemy.x = random(0,600);
-  enemy.y = random(0,600);
+  enemy.x = random(0,width);
+  enemy.y = random(0,width);
   enemy.width = width / 5;
   enemy.height = height / 2;
   enemy.velocity_x = -enemy.maxspd;
@@ -123,12 +116,8 @@ function setupPlanet() {
   planet.velocity_y = planet.maxspd;
 }
 
-// draw()
-//
 // While the game is active, checks input
 // updates positions of prey and player,
-// checks health (dying), checks eating (overlaps)
-// displays the two agents.
 // When the game is over, shows the game over screen.
 
 function draw() {
@@ -186,8 +175,8 @@ function movePlayer() {
 function moveEnemy() {
   enemy.x += 0.01;
   enemy.y += 0.01;
-  // Change the prey's velocity at random intervals
-  // random() will be < 0.05 5% of the time, so the prey
+  // Change the enemy's velocity at random intervals
+  // random() will be < 0.05 5% of the time, so the enemy
   // will change direction on 5% of frames
 
   // Update prey position based on velocity
@@ -235,28 +224,23 @@ function movePlanet() {
     planet.y = planet.y - height;
   }
 }
-
-// Check if the player overlaps the prey and updates health of both
+// Check if the player overlaps the enemy
 function checkDistance_Enemy() {
-  // Get distance of player to prey
+  // Get distance of player to enemy
   let Distance_1 = dist(ship.x, ship.y, enemy.x, enemy.y);
   // Check if it's an overlap
   if (Distance_1 < enemy.width / 2 + ship.width / 2) {
     gameOver = true;
   }
 }
-
 function checkDistance_Planet() {
-  // Get distance of player to prey
+  // Get distance of player to planet
   let Distance_2 = dist(ship.x, ship.y, planet.x, planet.y);
   // Check if it's an overlap
   if (Distance_2 < planet.width / 2 + ship.width / 2) {
     score = score + 1;
   }
 }
-
-// showGameOver()
-//
 // Display text about the game being over!
 function showGameOver() {
   background(137,0,0);
