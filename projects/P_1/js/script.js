@@ -24,7 +24,7 @@ let ship = {
   velocity_y: 0,
 
   speed: 25,
-};
+}
 
 // Prey position, size, velocity
 let enemy = {
@@ -41,7 +41,7 @@ let enemy = {
 
   speed: 25,
     maxspd: 45;
-};
+}
 
 let planet = {
 
@@ -57,7 +57,7 @@ let planet = {
 
   speed: 25,
     maxspd: 40;
-};
+}
 
 //Images and Sounds
 let sfx_1;
