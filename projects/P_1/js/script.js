@@ -40,7 +40,7 @@ let enemy = {
   velocity_y: 0,
 
   speed: 25,
-    maxspd: 45;
+    maxspd: 45,
 }
 
 let planet = {
@@ -56,7 +56,7 @@ let planet = {
   velocity_y: 0,
 
   speed: 25,
-    maxspd: 40;
+    maxspd: 40,
 }
 
 //Images and Sounds
