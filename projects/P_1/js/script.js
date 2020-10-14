@@ -174,9 +174,6 @@ function handleInput() {
   ship.y = mouseY;
 }
 
-// movePlayer()
-//
-// Updates player position based on velocity,
 // wraps around the edges.
 function movePlayer() {
   // Update position
@@ -238,12 +235,6 @@ function movePlanet() {
   }
 }
 
-// updateHealth()
-//
-// Reduce the player's health (happens every frame)
-// Check if the player is dead
-// checkEating()
-//
 // Check if the player overlaps the prey and updates health of both
 function checkDistance_Enemy() {
   // Get distance of player to prey
@@ -262,15 +253,6 @@ function checkDistance_Planet() {
     score = score + 1;
   }
 }
-
-
-// drawPrey()
-//
-// Draw the prey as an ellipse with alpha based on health
-
-// drawPlayer()
-//
-// Draw the player as an ellipse with alpha value based on health
 
 // showGameOver()
 //
