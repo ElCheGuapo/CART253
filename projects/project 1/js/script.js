@@ -116,7 +116,7 @@ function setupEnemy() {
   enemy.velocity_y = enemy.maxspd;
 }
 
-function setupEnemy() {
+function setupPlanet() {
   planet.x = random(0,1000);
   planet.y = random(0,1000);
   planet.width = width / 5;
@@ -144,18 +144,18 @@ function draw() {
       handleInput();
 
       movePlayer();
-        
+
         moveEnemy();
         movePlanet();
-        
+
         checkDistance_Enemy();
         checkDistance_Planet();
-        
+
     }
     else {
       showGameOver();
     }
-    
+
     image(ship.image, ship.x, ship.y, ship.width, ship.height);
     image(enemy.image, enemy.x, enemy.y, enemy.width, enemy.height);
     image(planet.image, planet.x, planet.y, planet.width, planet.height);
@@ -192,8 +192,8 @@ function moveEnemy() {
   // will change direction on 5% of frames
 
   // Update prey position based on velocity
-  enemy.width = enemy.width + enemy.velocity_x;
-  enemy.height = enemy.height + enemy.velocity_y;
+  enemy.x = enemy.x + enemy.velocity_x;
+  enemy.y = enemy.y + enemy.velocity_y;
 
   // Screen wrapping
   if (enemy.width < 0) {
@@ -219,8 +219,8 @@ function movePlanet() {
   // will change direction on 5% of frames
 
   // Update prey position based on velocity
-  planet.width = planet.width + planet.velocity_x;
-  planet.height = planet.height + planet.velocity_y;
+  planet.x = planet.x + planet.velocity_x;
+  planet.y = planet.y + planet.velocity_y;
 
   // Screen wrapping
   if (planet.width < 0) {
