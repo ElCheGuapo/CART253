@@ -59,8 +59,8 @@ function draw() {
   covid.y += covid.velocity_y;
 
   if (covid.x > width) {
-    covid.x = 0;
-    covid.y = random(0, height);
+    covid.x = random(0, width);
+    covid.y = 0;
   }
 
     //Declare Distance as the the dist attribute
