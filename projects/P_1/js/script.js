@@ -10,7 +10,7 @@ random movement, screen wrap.
 
 ******************************************************/
 
-// Player position, size, velocity
+// declare player class (position, size, velocity)
 let ship = {
 
   x: 0,
@@ -26,7 +26,7 @@ let ship = {
   speed: 25,
 }
 
-// Prey position, size, velocity
+//declare enemy class (position, size, velocity)
 let enemy = {
 
   x: 0,
@@ -43,6 +43,7 @@ let enemy = {
     maxspd: 45,
 }
 
+//declare planet class (position, size, velocity)
 let planet = {
 
   x: 0,
@@ -59,13 +60,11 @@ let planet = {
     maxspd: 40,
 }
 
-//Images and Sounds
+//declare images, variables and sounds
 let sfx_1;
-//Click to play screen
 let title;
 let backg;
 let started = false;
-// Track whether the game is over
 let gameOver = false;
 let score = 0;
 
@@ -81,10 +80,11 @@ function setup() {
   setupImage();
 
   setupSound();
-  // We're using simple functions to separate code out
-    setupEnemy();
+
+  setupEnemy();
 }
 
+//link asset paths
 function setupImage() {
   ship.image = loadImage('assets/images/koom.gif');
   enemy.image = loadImage('assets/images/coom.gif');
@@ -94,12 +94,10 @@ function setupImage() {
   imageMode(CENTER);
 }
 
+//initialize sound volume
 function setupSound() {
   sfx_1.setVolume(0.5);
 }
-// setupPrey()
-//
-// Initialises enemy's movement
 
 // Initialises player position
 function setupPlayer() {
@@ -108,17 +106,21 @@ function setupPlayer() {
 }
 
 function setupEnemy() {
-  enemy.x = random(0,1000);
-  enemy.y = random(0,1000);
+  enemy.x = random(0,600);
+  enemy.y = random(0,600);
   enemy.width = width / 5;
   enemy.height = height / 2;
+  enemy.velocity_x = -enemy.maxspd;
+  enemy.velocity_y = enemy.maxspd;
 }
 
 function setupPlanet() {
-  planet.x = random(0,1000);
-  planet.y = random(0,1000);
+  planet.x = random(0,600);
+  planet.y = random(0,600);
   planet.width = width / 5;
   planet.height = height / 2;
+  planet.velocity_x = -planet.maxspd;
+  planet.velocity_y = planet.maxspd;
 }
 
 // draw()
@@ -131,9 +133,12 @@ function setupPlanet() {
 
 function draw() {
     if (!started) {
+      //display title screen
+      //Click to play screen
       image(title, width/2, height/2);
     }
     else {
+      //display background image
       image(backg, width/2, height/2);
 
     if (!gameOver) {
@@ -152,6 +157,7 @@ function draw() {
       showGameOver();
     }
 
+//load images
     image(ship.image, ship.x, ship.y, ship.width, ship.height);
     image(enemy.image, enemy.x, enemy.y, enemy.width, enemy.height);
     image(planet.image, planet.x, planet.y, planet.width, planet.height);
@@ -189,45 +195,44 @@ function moveEnemy() {
   enemy.y = enemy.y + enemy.velocity_y;
 
   // Screen wrapping
-  if (enemy.width < 0) {
-    enemy.width = enemy.width + width;
+  if (enemy.x < 0) {
+    enemy.x = enemy.x + width;
   }
-  else if (enemy.width > width) {
-    enemy.width = enemy.width - width;
+  else if (enemy.x > width) {
+    enemy.x = enemy.x - width;
   }
 
-  if (enemy.height < 0) {
-    enemy.height = enemy.height + height;
+  if (enemy.y < 0) {
+    enemy.y = enemy.y + height;
   }
-  else if (enemy.height > height) {
-    enemy.height = enemy.height - height;
+  else if (enemy.y > height) {
+    enemy.y = enemy.y - height;
   }
 }
 
 function movePlanet() {
   planet.x += 0.01;
   planet.y += 0.01;
-  // Change the prey's velocity at random intervals
-  // random() will be < 0.05 5% of the time, so the prey
+  // Change the planet's velocity at random intervals
+  // random() will be < 0.05 5% of the time, so the planet
   // will change direction on 5% of frames
 
-  // Update prey position based on velocity
+  // Update planet position based on velocity
   planet.x = planet.x + planet.velocity_x;
   planet.y = planet.y + planet.velocity_y;
 
-  // Screen wrapping
-  if (planet.width < 0) {
-    planet.width = planet.width + width;
+  if (planet.x < 0) {
+    planet.x = planet.x + width;
   }
-  else if (planet.width > width) {
-    planet.width = planet.width - width;
+  else if (planet.x > width) {
+    planet.x = planet.x - width;
   }
 
-  if (planet.height < 0) {
-    planet.height = planet.height + height;
+  if (planet.y < 0) {
+    planet.y = planet.y + height;
   }
-  else if (planet.height > height) {
-    planet.height = planet.height - height;
+  else if (planet.y > height) {
+    planet.y = planet.y - height;
   }
 }
 
