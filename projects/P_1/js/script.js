@@ -112,8 +112,6 @@ function setupEnemy() {
   enemy.y = random(0,1000);
   enemy.width = width / 5;
   enemy.height = height / 2;
-  enemy.velocity_x = -enemy.maxspd;
-  enemy.velocity_y = enemy.maxspd;
 }
 
 function setupPlanet() {
@@ -121,8 +119,6 @@ function setupPlanet() {
   planet.y = random(0,1000);
   planet.width = width / 5;
   planet.height = height / 2;
-  planet.velocity_x = -planet.maxspd;
-  planet.velocity_y = planet.maxspd;
 }
 
 // draw()
