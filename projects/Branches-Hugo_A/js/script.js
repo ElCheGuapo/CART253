@@ -23,6 +23,7 @@ let bPos_vect;
 let bOri_vect;
 let bPos_vect1;
 let FPos_vect;
+let r;
 
 //boolean to create an acorn
 let fibon;
@@ -135,7 +136,7 @@ function createFibonacci(x, y, s) {
 
 //handle accorns
 function handleFibonacci() {
-  for (i = 0; i < fibonaccis.length; i++) {
+  for (var i = 0; i < fibonaccis.length; i++) {
     fibonaccis[i].show();
     fibonaccis[i].move();
 
