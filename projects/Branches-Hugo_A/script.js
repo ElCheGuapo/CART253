@@ -43,42 +43,42 @@ function preload() {
   //imgFibonacci = loadImage('assets/images/fibonacci.PNG');
   img_start = loadImage('assets/images/startscreen.png');
   bg_sfx = loadSound('assets/sounds/wind.mp3');
-  
+
 }
 
 function setup() {
   createCanvas(800, 800);
   angleMode(DEGREES);
   frameRate(5);
-  
+
   bg_sfx.loop();
   bg_sfx.setVolume(2);
-  
+
   //create starting branches
   createBranches(1.0, 0.0, 1.0, 0.0);
   createBranches(-1.0, 0.0, -1.0, 0.0);
 
   createBranches(0.0, 1.0, 0.0, 1.0);
   createBranches(0.0, -1.0, 0.0, -1.0);
-  
+
   //initialize Col_ variables into vectors
   Col_nvel1 = createVector(0.0, 0.0);
   Col_nvel2 = createVector(0.0, 0.0);
   Col_pos = createVector(0.0, 0.0);
   Col_pos_temp = createVector(0.0, 0.0);
-  
+
   //initialize fibon and mode
   fibon = false;
   mode = 0;
 }
 
 function draw() {
-  
+
   //start screen
   if (mode === 0) {
     image(img_start, 0, 0, width, height);
   }
-  
+
   //simulation is running
   if (mode === 1) {
     let rad_1 = 20;
@@ -97,7 +97,7 @@ function draw() {
     handleNColision();
     //handleBColision();
     if (Col_pos_temp != Col_pos) {
-      if (fibon === true) { 
+      if (fibon === true) {
         createFibonacci(Col_pos.x, Col_pos.y, 1);
         fibon = false;
       } else {
@@ -138,7 +138,7 @@ function handleFibonacci() {
   for (i = 0; i < fibonaccis.length; i++) {
     fibonaccis[i].show();
     fibonaccis[i].move();
-    
+
   }
 }
 
@@ -208,7 +208,7 @@ function handleNColision() {
     n_i = nutrients[i];
     for (var j = 0; j < branches.length; j++) {
       b_j = branches[j];
-      
+
       //
       nPos_vect = n_i.givePosition();
       bVel_vect = b_j.givePosition();
@@ -274,7 +274,7 @@ function handleNColision() {
           Col_nvel1 = bVel_vect.copy();
 
           bVel_vect.rotate(30);
-          Col_nvel2 = bVel_vect.copy(); 
+          Col_nvel2 = bVel_vect.copy();
         } else {
           //image(imgFibonacci, Col_pos.x, Col_pos.y-35, 50, 50);
           bVel_vect.rotate(60);
@@ -313,8 +313,8 @@ function handleNColision() {
 //         bColision = true;
 //       }
 //       if (bColision === true) {
-      
-        
+
+
 //         bColision = false;
 //       }
 //       if (i === j) {
